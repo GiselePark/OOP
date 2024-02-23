@@ -5,12 +5,15 @@ import model.UserDto;
 public class UserBuilder {
     private String username;
     private String password;
-    private String pwAgain;
+    private String passwordConfirm;
     private String name;
     private String ssn;
     private String phoneNumber;
     private String address;
     private String job;
+
+    private double height;
+    private double weight;
 
     public UserBuilder username(String username) {
         this.username = username;
@@ -22,8 +25,8 @@ public class UserBuilder {
         return this;
     }
 
-    public UserBuilder pwAgain(String pwAgain) {
-        this.pwAgain = pwAgain;
+    public UserBuilder passwordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
         return this;
     }
 
@@ -51,9 +54,18 @@ public class UserBuilder {
         this.job = job;
         return this;
     }
-
-    public UserDto build() {
-        return new UserDto(username, password, pwAgain, name, ssn, phoneNumber, address, job);
-
-        }
+    public UserBuilder height(double height) {
+        this.height = height;
+        return this;
     }
+    public UserBuilder weight(double weight) {
+        this.weight = weight;
+        return this;
+    }
+
+    public UserDto build(){
+        return new UserDto(username,password,passwordConfirm,name,ssn,phoneNumber,address,job,height,weight);
+    }
+
+
+}

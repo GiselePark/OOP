@@ -1,49 +1,40 @@
 package model;
 
 public class SubjectDto {
-    public SubjectDto(double korean, double english, double math) {
-        this.korean = korean;
-        this.english = english;
-        this.math = math;
+    private int korean;
+    private int english;
+    private int math;
+
+    public int getKorean() {
+        return this.korean;
     }
-
-    private double korean;
-    private double english;
-    private double math;
-
-    public double getkorean() {
-        return korean;
-    }
-
-    public void setkorean(double korean) {
+    public void setKorean(int korean) {
         this.korean = korean;
     }
-
-    public double getenglish() {
-        return english;
+    public int getEnglish() {
+        return this.english;
     }
-
-    public void setenglish(double english) {
+    public void setEnglish(int english) {
         this.english = english;
     }
-
-    public double getmath() {
-        return math;
+    public  int getMath() {
+        return this.math;
     }
-
-    public void setmath(double math) {
+    public void setMath(int math) {
         this.math = math;
     }
+    public SubjectDto(int korean, int math, int english){
+        this.korean=korean;
+        this.english=english;
+        this.math=math;
+    }
 
-    @Override
-    public String toString() {
+    public String toString(){
         return "SubjectDto{" +
-                "korean=" + korean +
-                ", english=" + english +
-                ", math=" + math +
+                "Korean='" + korean + '\'' +
+                ", English='" + english + '\'' +
+                ", Math='" + math + '\'' +
                 '}';
     }
 
-
-
-    }
+}
