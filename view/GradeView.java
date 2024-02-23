@@ -1,0 +1,51 @@
+package view;
+
+import builder.SubjectBuilder;
+import model.SubjectDto;
+import service.GradeService;
+import service.UtilService;
+import serviceImpl.GradeServiceImpl;
+import serviceImpl.UtilServiceImpl;
+
+import java.util.Scanner;
+
+public class GradeView {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        UtilService util = UtilServiceImpl.getInstance();
+        GradeService grade = GradeServiceImpl.getInstance();
+
+        SubjectDto subjects = new SubjectBuilder()
+                .korean(util.createRandomInteger(0,100))
+                .english(util.createRandomInteger(0,100))
+                .math(util.createRandomInteger(0,100))
+                .build();
+
+        int total = grade.getTotal(subjects.getKorean(), subjects.getEnglish(), subjects.getMath());
+        double average = grade.getAverage(subjects.getKorean(), subjects.getEnglish(), subjects.getMath());
+
+        System.out.printf("===================성적표===================\n"+
+                        "Korean : %s\n" +
+                        "Math : %s\n"+
+                        "English : %s\n Total : %s\n Average :%s",
+                String.valueOf(subjects.getKorean()),
+                String.valueOf(subjects.getEnglish()),
+                String.valueOf(subjects.getMath()),
+                String.valueOf(total),
+                String.valueOf(average));
+
+        SubjectDto subject = new SubjectBuilder()
+                .korean(sc.nextInt())
+                .english(sc.nextInt())
+                .math(sc.nextInt())
+                .build();
+
+        GradeService gradeService = GradeServiceImpl.getInstance();
+
+        System.out.println(subject.toString());
+
+        System.out.println("평균 점수: "+gradeService.getTotal(subject.getKorean(), subject.getEnglish(), subject.getMath()));
+
+    }
+
+}
