@@ -10,10 +10,11 @@ import serviceImpl.UtilServiceImpl;
 import java.util.Scanner;
 
 public class GradeView {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(Scanner sc) {
         UtilService util = UtilServiceImpl.getInstance();
         GradeService grade = GradeServiceImpl.getInstance();
+        System.out.println("학생 이름: ");
+        String name = sc.next();
 
         SubjectDto subjects = new SubjectBuilder()
                 .korean(util.createRandomInteger(0,100))
@@ -22,7 +23,7 @@ public class GradeView {
                 .build();
 
         int total = grade.getTotal(subjects.getKorean(), subjects.getEnglish(), subjects.getMath());
-        double average = grade.getAverage(subjects.getKorean(), subjects.getEnglish(), subjects.getMath());
+        double average = (grade.getAverage(subjects.getKorean(), subjects.getEnglish(), subjects.getMath()))/3;
 
         System.out.printf("===================성적표===================\n"+
                         "Korean : %s\n" +
@@ -44,7 +45,7 @@ public class GradeView {
 
         System.out.println(subject.toString());
 
-        System.out.println("평균 점수: "+gradeService.getTotal(subject.getKorean(), subject.getEnglish(), subject.getMath()));
+        System.out.println("평균 점수: "+average);
 
     }
 
