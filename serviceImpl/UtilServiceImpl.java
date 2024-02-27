@@ -2,6 +2,8 @@ package serviceImpl;
 
 import service.UtilService;
 
+import java.util.Random;
+
 public class UtilServiceImpl implements UtilService {
     private static UtilServiceImpl instance = new UtilServiceImpl();
     private UtilServiceImpl(){}
@@ -18,6 +20,13 @@ public class UtilServiceImpl implements UtilService {
     public double createRandomDouble(int start, int gapBetweenStartAndEnd) {
         return start + Math.round(
                 (int)(Math.random() * gapBetweenStartAndEnd) * 10 ) / 10.0;
+    }
+    @Override
+    public String createRandomUsername() {
+        String username = "";
+        for(; username.length() < 5; username += String.valueOf((char)('a' + this.createRandomInteger(0, 26))));
+        //아스키코드 97+0 =a
+        return username;
     }
     @Override
     public String createRandomName(){

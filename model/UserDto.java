@@ -1,6 +1,7 @@
 package model;
 
 public class UserDto {
+    private int id;
     private String username;
     private String password;
     private String pwAgain;
@@ -30,12 +31,12 @@ public class UserDto {
     public UserDto(String username, String password, String pwAgain, String name, String ssn, String phoneNumber, String address, String job) {
     }
 
-    public String getUserame() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserame(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -127,6 +128,6 @@ public class UserDto {
 //                ", bmi=" + bmi +
 //                ", bodyMass='" + bodyMass + '\'' +
                 '}';
-        }
-
     }
+
+}
