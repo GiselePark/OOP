@@ -1,6 +1,7 @@
 package view;
 
 import builder.UserBuilder;
+import controller.AuthController;
 import model.UserDto;
 import service.KaupService;
 import service.UtilService;
@@ -11,6 +12,7 @@ import java.util.Scanner;
 
 public class KaupView {
     public static void main(Scanner sc) {
+        AuthController ctrl = new AuthController();
         UtilService util = UtilServiceImpl.getInstance();
         UserDto person = new UserBuilder()
                 .height(util.createRandomDouble(150, 50))

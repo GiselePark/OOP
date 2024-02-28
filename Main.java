@@ -10,7 +10,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         while (true){
-            System.out.println("0-종료, 1-회원관리 2-성적표 3-게시판 4-카우프 5-사용자관리(맵)");
+            System.out.println("0-종료 1-Auth관리 2-성적표 3-게시판 4-카우프 5-User관리(맵)");
             switch (sc.next()){
                 case "0": return;
                 //main(String[] args)를 main()으로 수정해서 가져옴

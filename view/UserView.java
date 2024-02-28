@@ -3,13 +3,16 @@ package view;
 import controller.UserController;
 import model.UserDto;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class UserView {
     public static void main(Scanner sc) {
-        UserController ctrl = new UserController();
+        UserController userController = new UserController();
+        String msg = userController.addUsers();
+
         while(true){
-            System.out.println("[메뉴] 0-종료" +
+            System.out.println("[메뉴] 0-종료\n" +
                     "1-회원가입\n" +
                     "2-로그인\n" +
                     "3-ID 검색\n" +
@@ -23,8 +26,10 @@ public class UserView {
                 case "0":
                     System.out.println("종료");return;
                 case "1":
+                    System.out.println(userController.join(sc));
                     break;
                 case "2":
+                    System.out.println(userController.login(sc));
                     break;
                 case "3":
                     break;
@@ -33,12 +38,16 @@ public class UserView {
                 case "5":
                     break;
                 case "6":
+                    Map userList = userController.userList();
+                    System.out.println("회원 목록"+userList);
                     break;
                 case "7":
                     break;
                 case "8":
                     break;
                 case "9":
+                   String count = userController.count();
+                    System.out.println("회원 수: "+count);
                     break;
             }
         }

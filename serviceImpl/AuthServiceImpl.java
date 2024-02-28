@@ -11,55 +11,64 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class AuthServiceImpl implements AuthService {
-    private static AuthServiceImpl instance = new AuthServiceImpl();
+    private static AuthService instance = new AuthServiceImpl();
     Map<String, UserDto> users;
+    UtilService util = UtilServiceImpl.getInstance();
+
     private AuthServiceImpl() {
         this.users = new HashMap<>();
     }
-    public static AuthServiceImpl getInstance() {
+
+    public static AuthService getInstance() {
         return instance;
     }
-    @Override
-    public String join (Scanner sc) {
-        return null;
-    }
 
     @Override
-    public String login() {
-        return null;
+    public String join(UserDto user) {
+        users.put(user.getUsername(), user);
+        return "회원가입을 축하합니다.";
     }
-    @Override
-    public String addUsers(){ Map<String, UserDto> map = new HashMap<>();
-        UtilService util = UtilServiceImpl.getInstance();
 
-        for(int i=0; i<5; i++){
-            String username = util.createRandomUsername();
-            map.put(username,
-                    new UserBuilder()
-                            .username(username)
-                            .password("1")
-                            .passwordConfirm("1")
-                            .name(util.createRandomName())
-                            .build());
+    public String login(UserDto user) {
+        String msg = "";
+        UserDto userInMap = users.get(user.getUsername());
+        if (userInMap == null) {
+            msg = "미등록 아이디";
+        } else {
+            if (userInMap.getPassword().equals((user.getUsername()))) {
+                msg = "로그인 성공";
+            } else {
+                msg = "비밀번호 불일치";
+            }
         }
-        users = map;
-        return "더미값 추가";
+        return msg;
+    }
+
+
+    @Override
+    public String count() {
+        return users.size() + "";
     }
 
     @Override
-    public UserDto findUser(String username) {
-        UserDto user = new UserBuilder().build();
-        return user;
+    public String addUsers() {
+        for (int i = 0; i < 5; i++) {
+            String username = util.createRandomUsername();
+            users.put(username, new UserBuilder()
+                    .username(username)
+                    .password("1")
+                    .passwordConfirm("1")
+                    .name(util.createRandomName())
+                    .build());
+        }
+        System.out.println(users.size() + "명");
+        return users.size() + "";
     }
-    @Override
 
+    @Override
     public Map<String, UserDto> getUserMap() {
-        users.forEach((k,v)-> System.out.print("{"+k+","+v+"},"));
+        users.forEach((k, v) -> System.out.print("{" + k + "," + v + "},"));
         return users;
     }
-    @Override
-    public String count(){
-        System.out.println(users.size()+"명");
-        return users.size()+"";
-    }
 }
+

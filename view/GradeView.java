@@ -1,6 +1,7 @@
 package view;
 
 import builder.SubjectBuilder;
+import controller.UserController;
 import model.SubjectDto;
 import service.GradeService;
 import service.UtilService;
@@ -10,6 +11,7 @@ import serviceImpl.UtilServiceImpl;
 import java.util.Scanner;
 
 public class GradeView {
+    UserController ctrl = new UserController();
     public static void main(Scanner sc) {
         UtilService util = UtilServiceImpl.getInstance();
         GradeService grade = GradeServiceImpl.getInstance();

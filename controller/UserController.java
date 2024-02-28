@@ -1,5 +1,6 @@
 package controller;
 
+import builder.UserBuilder;
 import model.UserDto;
 import service.AuthService;
 import service.UserService;
@@ -9,43 +10,37 @@ import serviceImpl.UserServiceImpl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class UserController {
     UserService service;
-    public String join(UserDto user) {
-        return null;
+    public UserController(){
+        this.service = UserServiceImpl.getInstance();
     }
 
-    public String login(UserDto user) {
-        return null;
+    public String join(Scanner sc) {
+        return service.join(sc);
     }
 
-    public UserDto findUser(String username) {
-        return null;
+    public String addUsers() {
+        return service.addUsers();
     }
 
-    public void updatePassword(UserDto user) {
-
+    public String count() {
+        return service.count();
     }
 
-    public String deleteUser(String username) {
-        return null;
+
+    public Map userList() {
+        return service.userList();
     }
 
-    public List<UserDto> getUserlist() {
-        return null;
-    }
-
-    public List<UserDto> findUserByName(String name) {
-        return null;
-    }
-
-    public List<UserDto> findUserByJob(String job) {
-        return null;
-    }
-
-    public int countUsers() {
-        return 0;
+    public String login(Scanner sc) {
+        System.out.println("아이디, 비밀번호 입력해 주세요.");
+        return service.login(new UserBuilder()
+                .username(sc.next())
+                .password(sc.next())
+                .build());
     }
 }
 
