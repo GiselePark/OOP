@@ -13,4 +13,6 @@ public interface UserService {
     String count();
     Map userList();
     String login(UserDto build);
+    String updatePassword(Scanner sc);
+    String deleteAccount(Scanner sc);
 }

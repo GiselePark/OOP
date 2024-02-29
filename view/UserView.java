@@ -35,12 +35,14 @@ public class UserView {
                     System.out.println(userController.findUserById(sc));
                     break;
                 case "4":
+                    System.out.println(userController.updatePassword(sc));
                     break;
                 case "5":
+                    System.out.println(userController.deleteAccount(sc));
                     break;
                 case "6":
                     Map userList = userController.userList();
-                    System.out.println("회원 목록"+userList);
+                    System.out.println("회원목록"+'\n'+userList);
                     break;
                 case "7":
                     break;
@@ -48,7 +50,7 @@ public class UserView {
                     break;
                 case "9":
                    String count = userController.count();
-                    System.out.println("회원 수: "+count);
+                    System.out.println("회원수: "+count);
                     break;
             }
         }

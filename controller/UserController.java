@@ -45,5 +45,13 @@ public class UserController {
                 .password(sc.next())
                 .build());
     }
+
+    public String updatePassword(Scanner sc) {
+        return user.updatePassword(sc);
+    }
+
+    public String deleteAccount(Scanner sc) {
+        return user.deleteAccount(sc);
+    }
 }
 
