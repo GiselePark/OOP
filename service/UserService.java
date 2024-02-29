@@ -9,8 +9,8 @@ import java.util.Scanner;
 public interface UserService {
     String join(Scanner sc);
     String addUsers();
+    UserDto findUserById(Scanner sc);
     String count();
     Map userList();
-
     String login(UserDto build);
 }

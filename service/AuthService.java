@@ -11,6 +11,7 @@ public interface AuthService {
     String join(UserDto user);
     String login(UserDto user);
     String  addUsers();
+    UserDto updatePassword(Scanner sc);
     Map<String, UserDto> getUserMap();
     String count();
 }

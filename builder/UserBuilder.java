@@ -11,9 +11,9 @@ public class UserBuilder {
     private String phoneNumber;
     private String address;
     private String job;
-
     private double height;
     private double weight;
+
 
     public UserBuilder username(String username) {
         this.username = username;
@@ -64,7 +64,7 @@ public class UserBuilder {
     }
 
     public UserDto build(){
-        return new UserDto(username,password,passwordConfirm,name,ssn,phoneNumber,address,job,height,weight);
+        return new UserDto(username,password,passwordConfirm,name,ssn,phoneNumber,address,job);
     }
 
 

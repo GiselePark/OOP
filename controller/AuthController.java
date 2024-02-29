@@ -6,6 +6,7 @@ import service.AuthService;
 import serviceImpl.AuthServiceImpl;
 import serviceImpl.UserServiceImpl;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -60,4 +61,19 @@ public class AuthController {// implements AuthService 추가해 Service와 Cont
     }
 
 
+    public String updatePassword(Scanner sc) {
+        return null;
+    }
+
+    public UserDto deleteAccount(Scanner sc) {
+        return null;
+    }
+
+    public List<String> findUserByName(Scanner sc) {
+        return null;
+    }
+
+    public List<String> findUserByJob(Scanner sc) {
+        return null;
+    }
 }

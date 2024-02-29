@@ -13,31 +13,34 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class UserController {
-    UserService service;
+    UserService user;
     public UserController(){
-        this.service = UserServiceImpl.getInstance();
+        this.user = UserServiceImpl.getInstance();
     }
 
     public String join(Scanner sc) {
-        return service.join(sc);
+        return user.join(sc);
     }
 
     public String addUsers() {
-        return service.addUsers();
+        return user.addUsers();
+    }
+
+    public UserDto findUserById(Scanner sc){
+        return user.findUserById(sc);
     }
 
     public String count() {
-        return service.count();
+        return user.count();
     }
 
-
     public Map userList() {
-        return service.userList();
+        return user.userList();
     }
 
     public String login(Scanner sc) {
         System.out.println("아이디, 비밀번호 입력해 주세요.");
-        return service.login(new UserBuilder()
+        return user.login(new UserBuilder()
                 .username(sc.next())
                 .password(sc.next())
                 .build());

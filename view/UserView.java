@@ -15,9 +15,9 @@ public class UserView {
             System.out.println("[메뉴] 0-종료\n" +
                     "1-회원가입\n" +
                     "2-로그인\n" +
-                    "3-ID 검색\n" +
-                    "4-비번변경\n" +
-                    "5-탈퇴\n" +
+                    "3-아이디검색\n" +
+                    "4-비밀번호 변경\n" +
+                    "5-회원탈퇴\n" +
                     "6-회원목록\n" +
                     "7-이름검색\n" +
                     "8-직업검색\n" +
@@ -32,6 +32,7 @@ public class UserView {
                     System.out.println(userController.login(sc));
                     break;
                 case "3":
+                    System.out.println(userController.findUserById(sc));
                     break;
                 case "4":
                     break;

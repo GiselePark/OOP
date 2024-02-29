@@ -38,6 +38,12 @@ public class UserServiceImpl implements UserService {
         users = map;
         return "addusers 결과 : "+users+"개 더미값 추가";
     }
+
+    @Override
+    public UserDto findUserById(Scanner sc) {
+        return null;
+    }
+
     private static UserServiceImpl instance = new UserServiceImpl();
 
     public static UserServiceImpl getInstance() {
@@ -45,7 +51,7 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public String join(Scanner sc) {
-        System.out.println("ID, 비밀번호, 비밀번호 확인, 이름, 주민번호, 전화번호, 주소, 직업을 입력해 주세요.");
+        System.out.println("아이디, 비밀번호, 비밀번호 확인, 이름, 주민번호, 전화번호, 주소, 직업을 입력해 주세요.");
         String username = sc.next();
         users.put(username,
                 new UserBuilder()
@@ -59,7 +65,7 @@ public class UserServiceImpl implements UserService {
                         .job(sc.next())
                         .build());
 
-        return "회원가입을 축하합니다.";
+        return "회원가입을 축하합니다!";
     }
 
     @Override
@@ -78,12 +84,12 @@ public class UserServiceImpl implements UserService {
         String msg = "";
         UserDto userInMap = users.get(build.getUsername());
         if(userInMap==null) {
-            msg = "아이디 불일치";
+            msg = "계정을 찾을 수 없습니다.";
         }else{
             if(userInMap.getPassword().equals(userInMap.getPassword())){
-                msg = "로그인 성공";
+                msg = "로그인에 성공했습니다!";
             }else{
-                msg ="비밀번호 불일치";
+                msg ="비밀번호가 일치하지 않습니다.";
             }
         }
         return msg;

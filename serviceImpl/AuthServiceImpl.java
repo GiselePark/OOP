@@ -33,12 +33,12 @@ public class AuthServiceImpl implements AuthService {
         String msg = "";
         UserDto userInMap = users.get(user.getUsername());
         if (userInMap == null) {
-            msg = "미등록 아이디";
+            msg = "계정을 찾을 수 없습니다.";
         } else {
             if (userInMap.getPassword().equals((user.getUsername()))) {
-                msg = "로그인 성공";
+                msg = "로그인에 성공했습니다!";
             } else {
-                msg = "비밀번호 불일치";
+                msg = "비밀번호가 일치하지 않습니다.";
             }
         }
         return msg;
@@ -63,6 +63,11 @@ public class AuthServiceImpl implements AuthService {
         }
         System.out.println(users.size() + "명");
         return users.size() + "";
+    }
+
+    @Override
+    public UserDto updatePassword(Scanner sc) {
+        return null;
     }
 
     @Override
