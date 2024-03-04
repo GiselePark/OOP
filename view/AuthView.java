@@ -1,7 +1,7 @@
 package view;
 
 import controller.AuthController;
-import model.UserDto;
+import model.User;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -48,7 +48,7 @@ public class AuthView {
                     break;
                 case "6":
                     System.out.println("6-회원목록");
-                    Map<String, UserDto> users = authController.getUserMap();
+                    Map<String, User> users = authController.getUserMap();
                     users.forEach((k,v)-> {
                         System.out.printf("아이디: %s, 회원정보: %s",k, v);
                     });

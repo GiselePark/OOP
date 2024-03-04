@@ -1,7 +1,6 @@
 package view;
 
 import controller.UserController;
-import model.UserDto;
 
 import java.util.Map;
 import java.util.Scanner;

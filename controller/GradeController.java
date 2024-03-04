@@ -6,4 +6,5 @@ import serviceImpl.GradeServiceImpl;
 import view.GradeView;
 
 public class GradeController {
+    GradeService gradeService;
     }

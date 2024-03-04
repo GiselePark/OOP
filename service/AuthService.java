@@ -1,17 +1,16 @@
 package service;
 
-import model.UserDto;
+import model.User;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public interface AuthService {
 
-    String join(UserDto user);
-    String login(UserDto user);
+    String join(User user);
+    String login(User user);
     String  addUsers();
-    UserDto updatePassword(Scanner sc);
-    Map<String, UserDto> getUserMap();
+    User updatePassword(Scanner sc);
+    Map<String, User> getUserMap();
     String count();
 }

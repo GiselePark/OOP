@@ -1,10 +1,8 @@
 package controller;
 
-import builder.UserBuilder;
-import model.UserDto;
+import model.User;
 import service.AuthService;
 import serviceImpl.AuthServiceImpl;
-import serviceImpl.UserServiceImpl;
 
 import java.util.List;
 import java.util.Map;
@@ -28,7 +26,7 @@ public class AuthController {// implements AuthService 추가해 Service와 Cont
                 "전화번호, " +
                 "주소, " +
                 "직업을 입력해주세요");
-        return service.join(new UserBuilder()
+        return service.join(User.builder()
                 .username(sc.next())
                 .password(sc.next())
                 .passwordConfirm(sc.next())
@@ -40,7 +38,7 @@ public class AuthController {// implements AuthService 추가해 Service와 Cont
 
     public String login(Scanner sc) {
         System.out.println("아이디를 입력해 주세요.: ");
-        return service.login(new UserBuilder()
+        return service.login(User.builder()
                 .username(sc.next())
                 .password(sc.next())
                 .build());
@@ -52,7 +50,7 @@ public class AuthController {// implements AuthService 추가해 Service와 Cont
 
 
 
-    public static Map<String, UserDto> getUserMap() {
+    public static Map<String, User> getUserMap() {
         return service.getUserMap();
     }
 
@@ -65,7 +63,7 @@ public class AuthController {// implements AuthService 추가해 Service와 Cont
         return null;
     }
 
-    public UserDto deleteAccount(Scanner sc) {
+    public User deleteAccount(Scanner sc) {
         return null;
     }
 

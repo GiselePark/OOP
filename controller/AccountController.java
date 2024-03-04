@@ -1,11 +1,9 @@
 package controller;
 
-import builder.AccountBuilder;
-import model.AccountDto;
+import model.Account;
 import service.AccountService;
 import serviceImpl.AccountServiceImpl;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class AccountController {
@@ -13,21 +11,34 @@ public class AccountController {
     public AccountController(){
         this.account = AccountServiceImpl.getInstance(); }
 
-
-    public String create(Scanner sc) {
-        return null;
-    }
-
-    public String login(Scanner sc) {
-        return null;
+    public String create(Scanner sc){
+        return account.createAccount(Account.builder()
+                .id(sc.nextLong())
+                .accountHolder(sc.next())
+                .balance(sc.nextDouble())
+                .transactionDate(null)
+                .build()
+        );
     }
 
     public String deposit(Scanner sc) {
-        return null;
+        return account.deposit(Account.builder()
+            .id(sc.nextLong())
+            .accountNumber(sc.next())
+            .accountHolder(sc.next())
+            .balance(sc.nextDouble())
+            .transactionDate(null)
+            .build());
     }
 
     public String withdraw(Scanner sc) {
-        return null;
+        return account.withdraw(Account.builder()
+            .id(sc.nextLong())
+            .accountNumber(sc.next())
+            .accountHolder(sc.next())
+            .balance(sc.nextDouble())
+            .transactionDate(null)
+            .build());
     }
 
     public String getBalance() {
@@ -35,6 +46,6 @@ public class AccountController {
     }
 
     public String deleteAccount(Scanner sc) {
-        return null;
+        return account.deleteAccount(sc.next());
     }
 }

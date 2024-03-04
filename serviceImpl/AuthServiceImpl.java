@@ -1,37 +1,38 @@
 package serviceImpl;
 
-import builder.UserBuilder;
-import model.UserDto;
+import model.User;
 import service.AuthService;
 import service.UtilService;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class AuthServiceImpl implements AuthService {
     private static AuthService instance = new AuthServiceImpl();
-    Map<String, UserDto> users;
     UtilService util = UtilServiceImpl.getInstance();
+
+    Map<String, User> users;
+    List<User> userList;
 
     private AuthServiceImpl() {
         this.users = new HashMap<>();
+        this.userList = new ArrayList<>();
     }
+
 
     public static AuthService getInstance() {
         return instance;
     }
 
+
     @Override
-    public String join(UserDto user) {
+    public String join(User user) {
         users.put(user.getUsername(), user);
         return "회원가입을 축하합니다.";
     }
 
-    public String login(UserDto user) {
+    public String login(User user) {
         String msg = "";
-        UserDto userInMap = users.get(user.getUsername());
+        User userInMap = users.get(user.getUsername());
         if (userInMap == null) {
             msg = "계정을 찾을 수 없습니다.";
         } else {
@@ -54,7 +55,7 @@ public class AuthServiceImpl implements AuthService {
     public String addUsers() {
         for (int i = 0; i < 5; i++) {
             String username = util.createRandomUsername();
-            users.put(username, new UserBuilder()
+            users.put(username, User.builder()
                     .username(username)
                     .password("1")
                     .passwordConfirm("1")
@@ -66,12 +67,12 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public UserDto updatePassword(Scanner sc) {
+    public User updatePassword(Scanner sc) {
         return null;
     }
 
     @Override
-    public Map<String, UserDto> getUserMap() {
+    public Map<String, User> getUserMap() {
         users.forEach((k, v) -> System.out.print("{" + k + "," + v + "},"));
         return users;
     }

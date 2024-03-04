@@ -1,19 +1,17 @@
 package serviceImpl;
 
-import builder.UserBuilder;
-import model.UserDto;
+import model.User;
 import repository.UserRepository;
 import service.UserService;
 import service.UtilService;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class UserServiceImpl implements UserService {
     UserRepository userRepository;
-    Map<String, UserDto> users;
+    Map<String, User> users;
 
     public UserServiceImpl() {
         userRepository = new UserRepository();
@@ -24,12 +22,12 @@ public class UserServiceImpl implements UserService {
 
         UtilService util = UtilServiceImpl.getInstance();
 
-        Map<String, UserDto> map = new HashMap<>();
+        Map<String, User> map = new HashMap<>();
 
         for (int i = 0; i < 5; i++) {
             String username = util.createRandomUsername(); // util.을 통해 UtilServiceImpl 클래스의 createRandomUsername 이라는 기능을 가져와 String 타입의 문자열 값을 넣기 위해 username 이라는 변수에 참조값을 할당하였음.
             map.put(username,
-                    new UserBuilder()
+                    User.builder()
                             .username(username)
                             .password("1")
                             .passwordConfirm("1")
@@ -41,10 +39,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto findUserById(Scanner sc) {
+    public User findUserById(Scanner sc) {
         System.out.println("찾을 계정의 아이디를 입력하세요.");
         String userId = sc.next();
-        UserDto user = users.get(userId);
+        User user = users.get(userId);
         if (user != null) {
             System.out.println(user);
         } else {
@@ -65,7 +63,7 @@ public class UserServiceImpl implements UserService {
         System.out.println("아이디, 비밀번호, 비밀번호 확인, 이름, 주민번호, 전화번호, 주소, 직업을 입력하세요.");
         String username = sc.next();
         users.put(username,
-                new UserBuilder()
+                User.builder()
                         .username(username)
                         .password(sc.next())
                         .passwordConfirm(sc.next())
@@ -85,14 +83,14 @@ public class UserServiceImpl implements UserService {
     }  //int -> String
 
     @Override
-    public Map<String, UserDto> userList() {
+    public Map<String, User> userList() {
         return users;
     }
 
     @Override
-    public String login(UserDto build) {
+    public String login(User build) {
         String msg = "";
-        UserDto userInMap = users.get(build.getUsername());
+        User userInMap = users.get(build.getUsername());
         if (userInMap == null) {
             msg = "계정을 찾을 수 없습니다.";
         } else {
@@ -110,7 +108,7 @@ public class UserServiceImpl implements UserService {
         String msg = "";
         System.out.println("아이디를 입력하세요.");
         String username = sc.next();
-        UserDto user = users.get(username);
+        User user = users.get(username);
         if (user != null) {
             System.out.println("비밀번호를 입력하세요.");
             String password = sc.next();
@@ -135,7 +133,7 @@ public class UserServiceImpl implements UserService {
         String msg = "";
         System.out.println("삭제할 계정의 아이디를 입력하세요.");
         String username = sc.next();
-        UserDto user = users.get(username);
+        User user = users.get(username);
         if (username != null) ;
         {
             System.out.println("비밀번호를 입력하세요.");

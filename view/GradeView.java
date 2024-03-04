@@ -1,8 +1,8 @@
 package view;
 
-import builder.SubjectBuilder;
 import controller.UserController;
-import model.SubjectDto;
+import model.Subject;
+import model.User;
 import service.GradeService;
 import service.UtilService;
 import serviceImpl.GradeServiceImpl;
@@ -18,7 +18,7 @@ public class GradeView {
         System.out.println("학생 이름: ");
         String name = sc.next();
 
-        SubjectDto subjects = new SubjectBuilder()
+        Subject subjects = Subject.builder()
                 .korean(util.createRandomInteger(0,100))
                 .english(util.createRandomInteger(0,100))
                 .math(util.createRandomInteger(0,100))
@@ -37,7 +37,7 @@ public class GradeView {
                 String.valueOf(total),
                 String.valueOf(average));
 
-        SubjectDto subject = new SubjectBuilder()
+        Subject subject = Subject.builder()
                 .korean(sc.nextInt())
                 .english(sc.nextInt())
                 .math(sc.nextInt())

@@ -1,14 +1,9 @@
 package controller;
 
-import builder.UserBuilder;
-import model.UserDto;
-import service.AuthService;
+import model.User;
 import service.UserService;
-import serviceImpl.AuthServiceImpl;
 import serviceImpl.UserServiceImpl;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -26,7 +21,7 @@ public class UserController {
         return user.addUsers();
     }
 
-    public UserDto findUserById(Scanner sc){
+    public User findUserById(Scanner sc){
         return user.findUserById(sc);
     }
 
@@ -40,7 +35,7 @@ public class UserController {
 
     public String login(Scanner sc) {
         System.out.println("아이디, 비밀번호 입력해 주세요.");
-        return user.login(new UserBuilder()
+        return user.login(User.builder()
                 .username(sc.next())
                 .password(sc.next())
                 .build());
